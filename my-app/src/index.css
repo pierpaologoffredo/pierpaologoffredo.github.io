@@ -1,0 +1,31 @@
+/* src/index.css */
+@import "tailwindcss";
+@plugin "daisyui" {
+  theme: light, dark
+}
+
+/* Smooth scroll globale */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ogni sezione ha padding verticale uniforme */
+section {
+  padding: 1rem 0;
+}
+
+/* La prima sezione (hero) non ha padding-top perché c'è la navbar */
+section#hero {
+  padding-top: 0;
+}
+
+/* Colore primario arancione per entrambi i temi */
+[data-theme="light"] {
+  --color-primary: oklch(70% 0.2 50);
+  --color-primary-content: oklch(98% 0 0);
+}
+
+[data-theme="dark"] {
+  --color-primary: oklch(72% 0.2 50);
+  --color-primary-content: oklch(10% 0 0);
+}
