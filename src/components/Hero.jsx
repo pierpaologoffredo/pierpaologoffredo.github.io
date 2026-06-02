@@ -1,6 +1,8 @@
 // src/components/Hero.jsx
 import { personal, publications } from "../data/portfolio"
 import Typewriter from "./Typewriter"
+import { motion } from "framer-motion"
+import MagneticButton from "./MagneticButton"
 
 // All'inizio della Hero, dopo gli altri import, definisci i ruoli:
 const roles = [
@@ -34,17 +36,42 @@ function Hero() {
         <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
 
           {/* ── Colonna sinistra: testo ── */}
-          <div className="flex-1 text-center lg:text-left">
-
-            <div className="badge badge-outline border-primary text-primary gap-1 mb-6">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-              Nice, France · Open to opportunities
+          <div className="flex-1 text-center lg:text-left">            
+            <div className="badge badge-outline border-primary font-bold gap-1 mb-6">
+              📍 Nice, France 
             </div>
 
-            <h1 className="text-5xl lg:text-6xl font-bold leading-tight mb-3">
-              Pierpaolo<br />
-              <span className="text-primary">Goffredo</span>
-            </h1>
+            <div className="badge badge-outline border-primary text-primary font-bold gap-1 mb-6">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              Open to opportunities
+            </div>
+            <div className="mb-4">
+
+              {/* Nome */}
+              <div className="overflow-hidden">
+                <motion.h1
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  className="text-6xl lg:text-7xl xl:text-8xl font-bold leading-none tracking-tight"
+                >
+                  Pierpaolo
+                </motion.h1>
+              </div>
+
+              {/* Cognome con colore primario */}
+              <div className="overflow-hidden mt-1">
+                <motion.h1
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                  className="text-6xl lg:text-7xl xl:text-8xl font-bold leading-none tracking-tight text-primary"
+                >
+                  Goffredo
+                </motion.h1>
+              </div>
+
+            </div>
 
             <p className="text-xl font-semibold text-base-content/80 mb-2">
               {personal.title}
@@ -55,16 +82,12 @@ function Hero() {
             </div>
 
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-8">
-              <a href={`mailto:${personal.email}`} className="btn btn-primary">
-                Contact Me
-              </a>
-              <a
-                href={personal.cv}
-                download
-                className="btn btn-outline"
-              >
-                Download CV
-              </a>
+                <MagneticButton href="#contact" className="btn btn-primary">
+                    Contattami
+                </MagneticButton>
+                <MagneticButton href={personal.cv} download className="btn btn-outline">
+                    Download CV
+                </MagneticButton>
             </div>
 
             <div className="flex gap-1 justify-center lg:justify-start">

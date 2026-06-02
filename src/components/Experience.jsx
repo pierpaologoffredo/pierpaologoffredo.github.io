@@ -1,4 +1,5 @@
 // src/components/Experience.jsx
+import { motion } from "framer-motion"
 import { experience } from "../data/portfolio"
 
 function Experience() {
@@ -9,21 +10,31 @@ function Experience() {
         <h2 className="text-3xl font-bold mb-2">Experience</h2>
         <div className="w-12 h-1 bg-primary rounded mb-12"></div>
 
-        <ul className="timeline timeline-snap-icon timeline-compact timeline-vertical">
+        <motion.ul
+          className="timeline timeline-snap-icon timeline-compact timeline-vertical"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.12 } },
+          }}
+        >
           {experience.map((job) => (
-            <li key={job.id}>
+            <motion.li
+              key={job.id}
+              variants={{
+                hidden:  { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+              }}
+            >
               <div className="timeline-middle">
-                <div className={`w-4 h-4 rounded-full border-2 
-                  ${job.current
-                    ? "bg-primary border-primary"
-                    : "bg-base-100 border-base-300"
-                  }`}
-                ></div>
+                <div className="w-4 h-4 rounded-full border-2 bg-primary border-primary"></div>
               </div>
 
               <div className="timeline-end mb-8 w-full">
 
-                {/* Header */}
+                {/* Header: ruolo + periodo */}
                 <div className="flex flex-wrap items-start justify-between gap-2 mb-1">
                   <h3 className="font-bold text-base leading-tight">{job.role}</h3>
                   <span className="text-xs text-base-content/50 whitespace-nowrap">
@@ -56,9 +67,9 @@ function Experience() {
               </div>
 
               <hr className="bg-base-300" />
-            </li>
+            </motion.li>
           ))}
-        </ul>
+        </motion.ul>
 
       </div>
     </section>

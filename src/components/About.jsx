@@ -22,7 +22,10 @@ function About() {
 
           <Reveal delay={0.2}>
             <div className="flex flex-col gap-4 lg:w-72">
-              {/* ... le InfoRow ... */}
+              <InfoRow icon="📍" label="Location" value={personal.location} />
+              <InfoRow icon="✉️" label="Email" value={personal.email} />
+              <InfoRow icon="🇮🇹" label="Nationality" value="Italian" />
+              <InfoRow icon="🌍" label="Languages" value="Italian - English - French" />
             </div>
           </Reveal>
         </div>

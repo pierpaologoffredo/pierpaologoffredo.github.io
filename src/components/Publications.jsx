@@ -1,5 +1,6 @@
 // src/components/Publications.jsx
 import { publications } from "../data/portfolio"
+import { RevealList, RevealItem } from "./RevealList"
 
 // Colore del badge per venue — ogni conferenza ha il suo colore
 function venueBadgeClass(venue) {
@@ -19,9 +20,9 @@ function Publications() {
         <h2 className="text-3xl font-bold mb-2">Publications</h2>
         <div className="w-12 h-1 bg-primary rounded mb-12"></div>
 
-        <div className="flex flex-col gap-5">
+        <RevealList className="flex flex-col gap-5">
           {publications.map((pub) => (
-            <div key={pub.id} className="flex gap-5 items-start">
+            <RevealItem key={pub.id} className="flex gap-5 items-start">
 
               {/* Anno — colonna sinistra fissa */}
               <div className="hidden md:block w-12 shrink-0 text-right">
@@ -67,9 +68,9 @@ function Publications() {
                 </ul>
 
               </div>
-            </div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealList>
 
       </div>
     </section>
