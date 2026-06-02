@@ -1,6 +1,13 @@
 // src/components/Hero.jsx
 import { personal, publications } from "../data/portfolio"
+import Typewriter from "./Typewriter"
 
+// All'inizio della Hero, dopo gli altri import, definisci i ruoli:
+const roles = [
+  "AI/NLP Specialist",
+  "Innovation Pilote @ ALTEN",
+  "Researcher in Argument Mining",
+]
 function SocialLink({ href, label, children }) {
   return (
     <a
@@ -43,9 +50,9 @@ function Hero() {
               {personal.title}
             </p>
 
-            <p className="text-base text-base-content/60 mb-8 max-w-lg mx-auto lg:mx-0">
-              {personal.subtitle}
-            </p>
+            <div className="text-base text-base-content/70 mb-8 max-w-lg mx-auto lg:mx-0 font-mono min-h-[1.75rem]">
+              <Typewriter texts={roles} />
+            </div>
 
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-8">
               <a href={`mailto:${personal.email}`} className="btn btn-primary">

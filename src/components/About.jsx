@@ -1,32 +1,30 @@
 // src/components/About.jsx
 import { personal } from "../data/portfolio"
 
+import Reveal from "./Reveal"
+
 function About() {
   return (
     <section id="about" className="bg-base-200">
-      <div className="container mx-auto px-6 lg:px-16 py-24">
+      <div className="container mx-auto px-6 lg:px-16 py-10">
 
-        {/* Titolo sezione */}
-        <h2 className="text-3xl font-bold mb-2">About me</h2>
-        <div className="w-12 h-1 bg-primary rounded mb-12"></div>
+        <Reveal>
+          <h2 className="text-3xl font-bold mb-2">About me</h2>
+          <div className="w-12 h-1 bg-primary rounded mb-12"></div>
+        </Reveal>
 
         <div className="flex flex-col lg:flex-row gap-16">
-
-          {/* Testo bio */}
-          <div className="flex-1">
+          <Reveal delay={0.1}>
             <p className="text-base-content/80 text-lg leading-relaxed">
               {personal.summary}
             </p>
-          </div>
+          </Reveal>
 
-          {/* Info rapide */}
-          <div className="flex flex-col gap-4 lg:w-72">
-            <InfoRow icon="📍" label="Location" value={personal.location} />
-            <InfoRow icon="✉️" label="Email" value={personal.email} />
-            <InfoRow icon="🇮🇹" label="Nationality" value="Italian" />
-            <InfoRow icon="🌍" label="Languages" value="Italian - English - French" />
-          </div>
-
+          <Reveal delay={0.2}>
+            <div className="flex flex-col gap-4 lg:w-72">
+              {/* ... le InfoRow ... */}
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
