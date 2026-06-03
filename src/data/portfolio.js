@@ -4,7 +4,7 @@
 //  Modifica solo qui per aggiornare il sito.
 // ============================================================
 
-import photo from "../assets/profile_pic.jpg"
+import photo from "../assets/profile_pic.png"
 import cv from "../assets/CV_EN.pdf"
 
 export const personal = {

@@ -37,14 +37,30 @@ function Hero() {
 
           {/* ── Colonna sinistra: testo ── */}
           <div className="flex-1 text-center lg:text-left">            
-            <div className="badge badge-outline border-primary font-bold gap-1 mb-6">
-              📍 Nice, France 
+            <div className="flex items-center gap-3 mb-6 justify-center lg:justify-start text-sm">
+
+            {/* Location — minimal con icona SVG */}
+            <div className="flex items-center gap-1.5 text-base-content/60">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              Nice, France
             </div>
 
-            <div className="badge badge-outline border-primary text-primary font-bold gap-1 mb-6">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            {/* Separatore */}
+            <span className="text-base-content/30">/</span>
+
+            {/* Status — solo dot + testo */}
+            <div className="flex items-center gap-1.5 text-primary font-medium">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-75 animate-ping"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
               Open to opportunities
             </div>
+
+          </div>
             <div className="mb-4">
 
               {/* Nome */}
