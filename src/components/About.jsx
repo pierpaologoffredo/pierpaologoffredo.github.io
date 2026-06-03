@@ -1,6 +1,7 @@
 // src/components/About.jsx
 import { personal } from "../data/portfolio"
 import AboutAIChat from "./AboutAIChat"
+import { useState } from "react"
 
 function About() {
   return (
@@ -18,7 +19,7 @@ function About() {
 
           <div className="flex flex-col gap-4 lg:w-72">
             <InfoRow icon={<LocationIcon />}    label="Location"    value={personal.location} />
-            <InfoRow icon={<EmailIcon />}       label="Email"       value={personal.email} />
+            <InfoRow icon={<EmailIcon />}       label="Email"       value={personal.email} copyable />
             <InfoRow icon={<NationalityIcon />} label="Nationality" value="Italian" />
             <InfoRow icon={<LanguagesIcon />}   label="Languages"   value="Italian · English · French" />
           </div>
@@ -29,16 +30,50 @@ function About() {
   )
 }
 
-function InfoRow({ icon, label, value }) {
+function InfoRow({ icon, label, value, copyable = false }) {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(value)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch (err) {
+      console.error("Errore copia:", err)
+    }
+  }
+
   return (
     <div className="flex items-start gap-3">
-      {/* Box icona di dimensione fissa — garantisce allineamento perfetto */}
       <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
         {icon}
       </div>
-      <div>
+      <div className="flex-1 min-w-0">
         <p className="text-xs text-base-content/50 uppercase tracking-widest">{label}</p>
-        <p className="text-base-content/80 font-medium">{value}</p>
+        <div className="flex items-center gap-2">
+          <p className="text-base-content/80 font-medium truncate">{value}</p>
+
+          {copyable && (
+            <button
+              onClick={handleCopy}
+              className="text-base-content/40 hover:text-primary transition-colors shrink-0"
+              aria-label={copied ? "Copied!" : "Copy to clipboard"}
+              title={copied ? "Copied!" : "Copy to clipboard"}
+            >
+              {copied ? (
+                // Icona check verde
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              ) : (
+                // Icona clipboard
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+              )}
+            </button>
+          )}
+        </div>
       </div>
     </div>
   )

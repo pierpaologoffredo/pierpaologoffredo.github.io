@@ -65,17 +65,17 @@ function AboutAIChat() {
   }
 
   return (
-    <div ref={ref} className="rounded-2xl border border-base-300 bg-base-100 shadow-sm overflow-hidden">
+    <div ref={ref} className="rounded-2xl border-2 border-primary/40 bg-base-100 shadow-2xl overflow-hidden">
 
       {/* Header */}
-      <div className="flex items-center justify-between px-4 py-2.5 border-b border-base-300 bg-base-200/50">
-        <div className="flex gap-1.5">
+      <div className="flex items-center justify-between px-4 py-2.5 border-b border-base-300 bg-base-200">
+        <div className="flex gap-1.5 ">
           <span className="w-2.5 h-2.5 rounded-full bg-red-400/70"></span>
           <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/70"></span>
           <span className="w-2.5 h-2.5 rounded-full bg-green-400/70"></span>
         </div>
         <span className="text-xs font-medium text-base-content/50 font-mono">Chat with Pierpaolo</span>
-        <div className="w-12"></div>
+        <div className="w-12 "></div>
       </div>
 
       {/* Body */}
