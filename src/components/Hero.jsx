@@ -1,8 +1,11 @@
 // src/components/Hero.jsx
 import { personal, publications } from "../data/portfolio"
 import Typewriter from "./Typewriter"
-import { motion } from "framer-motion"
 import MagneticButton from "./MagneticButton"
+import { motion, AnimatePresence } from "framer-motion"
+// import niceMap from "../assets/nice_map.png"
+import altamura_map from "../assets/altamura_map.png"
+import { useState } from "react"
 
 // All'inizio della Hero, dopo gli altri import, definisci i ruoli:
 const roles = [
@@ -25,6 +28,7 @@ function SocialLink({ href, label, children }) {
 }
 
 function Hero() {
+  const [showMap, setShowMap] = useState(false)
   const papersCount   = publications.length
   const phdYears      = 3
   const languageCount = 3
@@ -40,12 +44,45 @@ function Hero() {
             <div className="flex items-center gap-3 mb-6 justify-center lg:justify-start text-sm">
 
             {/* Location — minimal con icona SVG */}
-            <div className="flex items-center gap-1.5 text-base-content/60">
+            <div
+              className="relative flex items-center gap-1.5 text-base-content/60 cursor-pointer"
+              onMouseEnter={() => setShowMap(true)}
+              onMouseLeave={() => setShowMap(false)}
+            >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
-              Nice, France
+              <span className="hover:text-primary transition-colors">{personal.location}</span>
+
+              {/* Tooltip mappa */}
+              <AnimatePresence>
+                {showMap && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.25, ease: "easeOut" }}
+                    className="absolute top-full left-0 mt-4 z-50 pointer-events-none"
+                    style={{ width: "512px" }}
+                  >
+                    <div className="relative w-full aspect-square">
+                      <img
+                        src={altamura_map}
+                        alt={`Map of ${personal.location}`}
+                        className="w-full h-full rounded-full object-cover shadow-2xl border-4 border-base-100 ring-2 ring-primary/30 block"
+                      />
+
+                      {/* Etichetta */}
+                      <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-base-100 px-3 py-1 rounded-full shadow-md border border-base-200 whitespace-nowrap">
+                        <span className="text-xs font-medium text-base-content/80">{personal.location} </span>
+                        <span className="text-base-content/30">/</span>
+                        <span className="text-xs text-base-content/40"> {personal.coordinates}</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             {/* Separatore */}
