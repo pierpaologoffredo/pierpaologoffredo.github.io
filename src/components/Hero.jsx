@@ -64,7 +64,7 @@ function Hero() {
                     exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ duration: 0.25, ease: "easeOut" }}
                     className="absolute top-full left-0 mt-4 z-50 pointer-events-none"
-                    style={{ width: "512px" }}
+                    style={{ width: "384px" }}
                   >
                     <div className="relative w-full aspect-square">
                       <img
@@ -136,7 +136,7 @@ function Hero() {
 
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-8">
                 <MagneticButton href="#contact" className="btn btn-primary">
-                    Contattami
+                    Contact Me
                 </MagneticButton>
                 <MagneticButton href={personal.cv} download className="btn btn-outline">
                     Download CV
