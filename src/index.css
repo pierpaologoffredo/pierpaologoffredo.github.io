@@ -46,3 +46,8 @@ section {
 section#hero {
   padding-top: 0;
 }
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-primary-content);
+}
