@@ -4,7 +4,7 @@ import Typewriter from "./Typewriter"
 import MagneticButton from "./MagneticButton"
 import { motion, AnimatePresence } from "framer-motion"
 // import niceMap from "../assets/nice_map.png"
-import altamura_map from "../assets/altamura_map.png"
+import altamura_map from "../assets/altamura_map.webp"
 import { useState } from "react"
 
 // All'inizio della Hero, dopo gli altri import, definisci i ruoli:
