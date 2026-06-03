@@ -24,11 +24,11 @@ export const personal = {
     scholar: "https://scholar.google.com/citations?user=9jQ3S3AAAAAJ&hl=it",
   },
 
-  summary: `AI/NLP specialist and Innovation Pilote at ALTEN SA, directing multiple AI 
-  and NLP projects within the R&D department. Ph.D. in AI (Université Côte d'Azur), 
-  with a record of building production-ready NLP systems and publishing at top-tier 
-  venues (EMNLP, AAAI, IJCAI, ACL). Experienced in mentoring interns/PhD candidates 
-  and driving adoption of LLMs, Generative AI, and advanced ML/DL.`,
+  summary: `**AI/NLP specialist** and **Innovation Pilote** at ALTEN SA, directing multiple AI 
+            and NLP projects within the R&D department. **Ph.D. in AI** (Université Côte d'Azur), 
+            with a record of building **production-ready NLP systems** and publishing at top-tier 
+            venues (**EMNLP**, **AAAI**, **IJCAI**, **ACL**). Experienced in mentoring interns/PhD 
+            candidates and driving adoption of **LLMs**, **Generative AI**, and advanced **ML/DL**.`,
 };
 
 export const experience = [

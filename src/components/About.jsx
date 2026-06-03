@@ -1,5 +1,6 @@
 // src/components/About.jsx
 import { personal } from "../data/portfolio"
+import AboutAIChat from "./AboutAIChat"
 
 function About() {
   return (
@@ -12,9 +13,7 @@ function About() {
         <div className="flex flex-col lg:flex-row gap-16">
 
           <div className="flex-1">
-            <p className="text-base-content/80 text-lg leading-relaxed">
-              {personal.summary}
-            </p>
+            <AboutAIChat />
           </div>
 
           <div className="flex flex-col gap-4 lg:w-72">
