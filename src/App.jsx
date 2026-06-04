@@ -26,7 +26,7 @@ function App() {
       <AnimatedBackground />
       <Navbar onToggleTheme={toggleTheme} theme={theme} />
     <main>
-        <section id="hero">
+        <section id="hero" className="relative z-10">
           <Hero />
         </section>
 
