@@ -18,7 +18,7 @@ function Skills() {
         <h2 className="text-3xl font-bold mb-2">Skills</h2>
         <div className="w-12 h-1 bg-primary rounded mb-12"></div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-5">
           {skills.map((group) => {
             const icon = categoryIcons[group.category]
 
@@ -29,7 +29,7 @@ function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.5 }}
-                className="rounded-2xl bg-base-200 border border-base-300 p-6 hover:border-primary/30 transition-colors"
+                className="rounded-2xl bg-base-100/65 border border-base-300 p-6 hover:border-primary/30 transition-colors"
               >
 
                 {/* Header card: icona + nome */}
