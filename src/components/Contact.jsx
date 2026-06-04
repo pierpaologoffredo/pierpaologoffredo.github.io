@@ -22,7 +22,7 @@ function ContactLink({ href, label, icon, value }) {
 
 function Contact() {
   return (
-    <section id="contact" className="bg-base-100">
+    <section id="contact">
       <div className="container mx-auto px-6 lg:px-16 py-10">
 
         <h2 className="text-3xl font-bold mb-2">Contact</h2>

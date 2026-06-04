@@ -14,7 +14,7 @@ function venueBadgeClass(venue) {
 
 function Publications() {
   return (
-    <section id="publications" className="bg-base-200">
+    <section id="publications">
       <div className="container mx-auto px-6 lg:px-16 py-10">
 
         <h2 className="text-3xl font-bold mb-2">Publications</h2>

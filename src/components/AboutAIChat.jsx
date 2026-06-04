@@ -65,7 +65,7 @@ function AboutAIChat() {
   }
 
   return (
-    <div ref={ref} className="rounded-2xl border-2 border-primary/40 bg-base-100 shadow-2xl overflow-hidden">
+    <div ref={ref} className="relative z-10 rounded-2xl border-2 border-primary/40 bg-base-100/50 shadow-2xl overflow-hidden">
 
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-2.5 border-b border-base-300 bg-base-200">

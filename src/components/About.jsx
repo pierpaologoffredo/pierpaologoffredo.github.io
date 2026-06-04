@@ -5,7 +5,7 @@ import { useState } from "react"
 
 function About() {
   return (
-    <section id="about" className="bg-base-200">
+    <section id="about">
       <div className="container mx-auto px-6 lg:px-16 py-10">
 
         <h2 className="text-3xl font-bold mb-2">About me</h2>

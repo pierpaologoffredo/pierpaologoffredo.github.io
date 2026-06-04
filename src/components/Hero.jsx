@@ -34,8 +34,10 @@ function Hero() {
   const languageCount = 3
 
   return (
-    <section className="flex flex-col justify-center bg-base-100">
-      <div className="container mx-auto px-6 lg:px-16 py-16">
+    <section
+      className="relative overflow-hidden flex flex-col justify-center"
+    >
+      <div className="container mx-auto px-6 lg:px-16 py-24 relative z-10">
 
         <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
 

@@ -4,7 +4,7 @@ import { experience } from "../data/portfolio"
 
 function Experience() {
   return (
-    <section id="experience" className="bg-base-100">
+    <section id="experience">
       <div className="container mx-auto px-6 lg:px-16 py-10">
 
         <h2 className="text-3xl font-bold mb-2">Experience</h2>

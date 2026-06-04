@@ -9,6 +9,8 @@ import Skills     from "./components/Skills"
 import Publications from "./components/Publications"
 import Contact    from "./components/Contact"
 import Footer     from "./components/Footer"
+import AnimatedBackground from "./components/AnimatedBackground"
+
 function App() {
 
   const [theme, setTheme] = useState("dark")
@@ -21,6 +23,7 @@ function App() {
 
   return (
     <div data-theme={theme}>
+      <AnimatedBackground />
       <Navbar onToggleTheme={toggleTheme} theme={theme} />
     <main>
         <section id="hero">
