@@ -54,25 +54,6 @@ function Experience() {
                   viewport={{ once: true, amount: 0.15 }}
                   transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  {/* Dot — mobile */}
-                  <motion.div
-                    className="lg:hidden absolute -left-[27px] top-8 w-[10px] h-[10px] rounded-full bg-primary border-2 border-base-100 z-10"
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  />
-
-                  {/* Dot — desktop, centrato sulla linea */}
-                  <motion.div
-                    className="hidden lg:block absolute left-1/2 -translate-x-1/2 top-8 w-3 h-3 rounded-full bg-primary border-2 border-base-100 z-10"
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  />
-
-
                   {/* Card */}
                   <div className={`lg:w-[46%] ${isLeft ? "lg:mr-auto" : "lg:ml-auto"} rounded-2xl bg-base-100/50 border border-base-300 hover:border-primary/30 transition-colors overflow-hidden`}>
 

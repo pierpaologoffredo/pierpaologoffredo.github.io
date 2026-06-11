@@ -32,12 +32,16 @@ function Publications() {
               {/* Accento verticale sinistro */}
               <div className="absolute left-0 top-0 bottom-0 w-[3px] rounded-full bg-gradient-to-b from-primary/60 via-primary/20 to-transparent" />
 
-              {/* Anno watermark */}
+              {/* Venue acronym watermark */}
               <span
-                className="jersey-20-regular pointer-events-none select-none absolute -right-1 -bottom-3 leading-none text-primary"
-                style={{ fontSize: "clamp(5rem, 10vw, 8rem)", opacity: 0.07 }}
+                className="jersey-20-regular pointer-events-none select-none absolute right-4 -bottom-4 leading-none text-primary origin-bottom-right"
+                style={{
+                  fontSize: "clamp(4rem, 9vw, 7rem)",
+                  opacity: 0.08,
+                  transform: "rotate(12deg)",
+                }}
               >
-                {pub.year}
+                {pub.venue.match(/^[A-Z]+/)?.[0]}
               </span>
 
               {/* Contenuto */}
