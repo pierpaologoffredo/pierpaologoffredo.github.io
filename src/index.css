@@ -76,3 +76,15 @@ section#hero {
 .animate-blob-1 { animation: blob-1 22s ease-in-out infinite; }
 .animate-blob-2 { animation: blob-2 26s ease-in-out infinite; }
 .animate-blob-3 { animation: blob-3 30s ease-in-out infinite; }
+
+.jersey-20-regular {
+  font-family: "Jersey 20", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.mr-dafoe-regular {
+  font-family: "Mr Dafoe", cursive;
+  font-weight: 400;
+  font-style: normal;
+}

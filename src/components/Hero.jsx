@@ -102,27 +102,27 @@ function Hero() {
           </div>
             <div className="mb-4">
 
-              {/* Nome */}
-              <div className="overflow-hidden">
+              {/* Nome — primo piano */}
+              <div className="relative z-10">
                 <motion.h1
-                  initial={{ y: "100%" }}
-                  animate={{ y: 0 }}
+                  initial={{ y: 40, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                  className="text-6xl lg:text-7xl xl:text-8xl font-bold leading-none tracking-tight"
+                  className="mr-dafoe-regular text-[clamp(3rem,12.5vw,10rem)] leading-none"
                 >
                   Pierpaolo
                 </motion.h1>
               </div>
 
-              {/* Cognome con colore primario */}
-              <div className="overflow-hidden mt-1">
+              {/* Cognome — secondo piano, sovrapposto */}
+              <div className="overflow-hidden relative -mt-[clamp(0.8rem,4vw,4rem)]">
                 <motion.h1
                   initial={{ y: "100%" }}
                   animate={{ y: 0 }}
                   transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                  className="text-6xl lg:text-7xl xl:text-8xl font-bold leading-none tracking-tight text-primary"
+                  className="jersey-20-regular text-[clamp(4rem,15vw,12rem)] leading-none tracking-tight text-primary/70"
                 >
-                  Goffredo
+                  GOFFREDO
                 </motion.h1>
               </div>
 
