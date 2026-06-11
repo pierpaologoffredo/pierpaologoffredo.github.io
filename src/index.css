@@ -4,6 +4,11 @@
   theme: light, dark
 }
 
+/* Nasconde il cursore di sistema — sostituito da CustomCursor */
+*, *::before, *::after {
+  cursor: none !important;
+}
+
 /* Smooth scroll globale */
 html {
   scroll-behavior: smooth;
@@ -21,7 +26,7 @@ section#hero {
 
 /* Colore primario arancione per entrambi i temi */
 [data-theme="light"] {
-  --color-primary: oklch(70% 0.2 50);
+  --color-primary: #fb6e00;
   --color-primary-content: oklch(98% 0 0);
 }
 
