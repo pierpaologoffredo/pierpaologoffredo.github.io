@@ -7,7 +7,7 @@ function ContactLink({ href, label, icon, value }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="relative z-10 flex items-center gap-4 p-4 rounded-xl bg-base-200/55 hover:bg-base-300 transition-colors group"
+      className="relative z-10 flex items-center gap-4 p-4 rounded-xl bg-base-200/55 border-2 border-transparent hover:bg-base-300 hover:border-primary/40 transition-colors group"
     >
       <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
         {icon}
