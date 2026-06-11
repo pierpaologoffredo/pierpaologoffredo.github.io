@@ -120,7 +120,7 @@ function Hero() {
                   initial={{ y: "100%" }}
                   animate={{ y: 0 }}
                   transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                  className="jersey-20-regular text-[clamp(4rem,15vw,12rem)] leading-none tracking-tight text-primary/70"
+                  className="jersey-20-regular text-[clamp(4rem,15vw,12rem)] leading-none tracking-tight text-primary"
                 >
                   GOFFREDO
                 </motion.h1>
