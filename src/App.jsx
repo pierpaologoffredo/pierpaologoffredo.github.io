@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { motion, useScroll, useSpring } from "framer-motion"
 
 import Navbar    from "./components/Navbar"
 import Hero      from "./components/Hero"
@@ -10,8 +11,11 @@ import Publications from "./components/Publications"
 import Contact    from "./components/Contact"
 import Footer     from "./components/Footer"
 import AnimatedBackground from "./components/AnimatedBackground"
+import CustomCursor from "./components/CustomCursor"
 
 function App() {
+  const { scrollYProgress } = useScroll()
+  const scaleX = useSpring(scrollYProgress, { stiffness: 200, damping: 30 })
 
   const [theme, setTheme] = useState("dark")
 
@@ -23,6 +27,14 @@ function App() {
 
   return (
     <div data-theme={theme}>
+      <CustomCursor />
+
+      {/* Scroll progress bar */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-[2px] bg-primary origin-left z-[9997]"
+        style={{ scaleX }}
+      />
+
       <AnimatedBackground />
       <Navbar onToggleTheme={toggleTheme} theme={theme} />
     <main>

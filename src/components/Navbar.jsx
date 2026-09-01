@@ -1,54 +1,90 @@
-// src/components/Navbar.jsx
+import { useState, useEffect } from "react"
+import { motion } from "framer-motion"
 import { personal } from "../data/portfolio"
 
-// Riceve due props da App.jsx:
-//   onToggleTheme → funzione da chiamare al click
-//   theme         → "light" o "dark", per mostrare l'icona giusta
-function Navbar({ onToggleTheme, theme }) {
+const links = [
+  { label: "About",        href: "#about"        },
+  { label: "Experience",   href: "#experience"   },
+  { label: "Education",    href: "#education"    },
+  { label: "Skills",       href: "#skills"       },
+  { label: "Publications", href: "#publications" },
+  { label: "Contact",      href: "#contact"      },
+]
 
-  const links = [
-    { label: "About",        href: "#about"        },
-    { label: "Experience",   href: "#experience"   },
-    { label: "Education",    href: "#education"    },
-    { label: "Skills",       href: "#skills"       },
-    { label: "Publications", href: "#publications" },
-    { label: "Contact",      href: "#contact"      },
-  ]
+function Navbar({ onToggleTheme, theme }) {
+  const [activeSection, setActiveSection] = useState("")
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY + 120
+      let current = ""
+      for (const link of links) {
+        const el = document.getElementById(link.href.slice(1))
+        if (el && el.offsetTop <= scrollY) current = link.href.slice(1)
+      }
+      setActiveSection(current)
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   return (
-    <div className="navbar bg-base-100 shadow-sm sticky top-0 z-50">
+    <div className="navbar bg-base-100/30 backdrop-blur-xl border-b border-base-content/10 sticky top-0 z-50">
 
-      {/* Logo / nome a sinistra */}
+      {/* Logo — monogramma PG */}
       <div className="navbar-start">
-        <a href="#hero" className="btn btn-ghost text-lg font-bold">
-          {personal.name}
+        <a
+          href="#hero"
+          className="flex items-center justify-center w-9 h-9 ml-2 rounded-lg bg-primary/10 border border-primary/25 hover:bg-primary/20 transition-colors"
+        >
+          <span className="text-sm font-bold text-primary tracking-tight">PG</span>
         </a>
       </div>
 
-      {/* Link al centro — visibili solo su schermi grandi (lg:flex) */}
+      {/* Link centro — desktop */}
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 gap-1">
-          {links.map((link) => (
-            <li key={link.href}>
-              <a href={link.href} className="text-sm">
-                {link.label}
-              </a>
-            </li>
-          ))}
+        <ul className="flex items-center gap-1 px-1">
+          {links.map((link) => {
+            const isActive = activeSection === link.href.slice(1)
+            return (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className={`relative px-3 py-2 text-sm rounded-lg block transition-colors ${
+                    isActive ? "text-primary" : "text-base-content/70 hover:text-base-content"
+                  }`}
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="active-pill"
+                      className="absolute inset-0 rounded-lg bg-primary/10"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
+                    />
+                  )}
+                  <span className="relative z-10">{link.label}</span>
+                </a>
+              </li>
+            )
+          })}
         </ul>
       </div>
 
-      {/* Toggle tema a destra */}
-
-
+      {/* Toggle tema + hamburger */}
       <div className="navbar-end gap-2">
         <label className="flex cursor-pointer gap-2">
-            <span className="dark-theme">🌙</span>
-            <input type="checkbox" value="dark-theme" className="toggle theme-controller" onChange={onToggleTheme} checked={theme === "light"} />
-            <span className="light-theme">☀️</span>
+          <span>🌙</span>
+          <input
+            type="checkbox"
+            className="toggle theme-controller"
+            onChange={onToggleTheme}
+            checked={theme === "light"}
+          />
+          <span>☀️</span>
         </label>
 
-        {/* Menu hamburger — visibile solo su mobile */}
+        {/* Hamburger — mobile */}
         <div className="dropdown dropdown-end lg:hidden">
           <button tabIndex={0} className="btn btn-ghost btn-circle">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
@@ -58,10 +94,15 @@ function Navbar({ onToggleTheme, theme }) {
             </svg>
           </button>
           <ul tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
+            className="menu menu-sm dropdown-content bg-base-100/90 backdrop-blur-md rounded-box z-50 mt-3 w-52 p-2 shadow border border-base-content/5">
             {links.map((link) => (
               <li key={link.href}>
-                <a href={link.href}>{link.label}</a>
+                <a
+                  href={link.href}
+                  className={activeSection === link.href.slice(1) ? "text-primary" : ""}
+                >
+                  {link.label}
+                </a>
               </li>
             ))}
           </ul>

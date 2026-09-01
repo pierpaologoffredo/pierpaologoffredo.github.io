@@ -1,14 +1,30 @@
 // src/components/Contact.jsx
+import { useState } from "react"
 import { personal } from "../data/portfolio"
 
 function ContactLink({ href, label, icon, value }) {
+  const [pos, setPos] = useState({ x: 0, y: 0, over: false })
+
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="relative z-10 flex items-center gap-4 p-4 rounded-xl bg-base-200/55 hover:bg-base-300 transition-colors group"
+      className="relative z-10 flex items-center gap-4 p-4 rounded-xl bg-base-200/55 border-2 border-transparent hover:bg-base-300 hover:border-primary/40 transition-colors group overflow-hidden"
+      onMouseMove={(e) => {
+        const r = e.currentTarget.getBoundingClientRect()
+        setPos({ x: e.clientX - r.left, y: e.clientY - r.top, over: true })
+      }}
+      onMouseLeave={() => setPos(p => ({ ...p, over: false }))}
     >
+      {/* Spotlight overlay */}
+      <div
+        className="pointer-events-none absolute inset-0 rounded-[inherit] transition-opacity duration-300"
+        style={{
+          opacity: pos.over ? 1 : 0,
+          background: `radial-gradient(200px circle at ${pos.x}px ${pos.y}px, color-mix(in oklch, var(--color-primary) 10%, transparent), transparent 70%)`,
+        }}
+      />
       <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
         {icon}
       </div>

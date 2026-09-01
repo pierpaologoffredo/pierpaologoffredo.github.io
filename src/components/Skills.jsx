@@ -1,4 +1,5 @@
 // src/components/Skills.jsx
+import { useState } from "react"
 import { motion } from "framer-motion"
 import { skills } from "../data/portfolio"
 
@@ -10,6 +11,70 @@ const categoryIcons = {
   "Languages":             <GlobeIcon />,
 }
 
+function SkillCard({ group, icon }) {
+  const [pos, setPos] = useState({ x: 0, y: 0, over: false })
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5 }}
+      className="relative overflow-hidden rounded-2xl bg-base-100/65 border border-base-300 p-6 hover:border-primary/30 transition-colors"
+      onMouseMove={(e) => {
+        const r = e.currentTarget.getBoundingClientRect()
+        setPos({ x: e.clientX - r.left, y: e.clientY - r.top, over: true })
+      }}
+      onMouseLeave={() => setPos(p => ({ ...p, over: false }))}
+    >
+      {/* Spotlight overlay */}
+      <div
+        className="pointer-events-none absolute inset-0 rounded-[inherit] transition-opacity duration-300"
+        style={{
+          opacity: pos.over ? 1 : 0,
+          background: `radial-gradient(280px circle at ${pos.x}px ${pos.y}px, color-mix(in oklch, var(--color-primary) 10%, transparent), transparent 70%)`,
+        }}
+      />
+
+      {/* Header card: icona + nome */}
+      <div className="flex items-center gap-2 mb-5">
+        <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+          {icon}
+        </div>
+        <h3 className="text-sm font-bold uppercase tracking-widest text-primary">
+          {group.category}
+        </h3>
+      </div>
+
+      {/* Badge skills */}
+      <motion.div
+        className="flex flex-wrap gap-2"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={{
+          hidden: {},
+          visible: { transition: { staggerChildren: 0.04 } },
+        }}
+      >
+        {group.items.map((skill) => (
+          <motion.span
+            key={skill}
+            variants={{
+              hidden:  { opacity: 0, scale: 0.8 },
+              visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
+            }}
+            whileHover={{ scale: 1.05 }}
+            className="badge badge-lg cursor-default transition-colors bg-base-100 text-base-content/70 border border-base-300 hover:border-primary hover:text-primary"
+          >
+            {skill}
+          </motion.span>
+        ))}
+      </motion.div>
+    </motion.div>
+  )
+}
+
 function Skills() {
   return (
     <section id="skills">
@@ -19,60 +84,13 @@ function Skills() {
         <div className="w-12 h-1 bg-primary rounded mb-12"></div>
 
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-5">
-          {skills.map((group) => {
-            const icon = categoryIcons[group.category]
-
-            return (
-              <motion.div
-                key={group.category}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.5 }}
-                className="rounded-2xl bg-base-100/65 border border-base-300 p-6 hover:border-primary/30 transition-colors"
-              >
-
-                {/* Header card: icona + nome */}
-                <div className="flex items-center gap-2 mb-5">
-                  <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                    {icon}
-                  </div>
-                  <h3 className="text-sm font-bold uppercase tracking-widest text-primary">
-                    {group.category}
-                  </h3>
-                </div>
-
-                {/* Badge skills */}
-                <motion.div
-                  className="flex flex-wrap gap-2"
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.1 }}
-                  variants={{
-                    hidden: {},
-                    visible: { transition: { staggerChildren: 0.04 } },
-                  }}
-                >
-                  {group.items.map((skill) => {
-                    return (
-                      <motion.span
-                        key={skill}
-                        variants={{
-                          hidden:  { opacity: 0, scale: 0.8 },
-                          visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
-                        }}
-                        whileHover={{ scale: 1.05 }}
-                        className={`badge badge-lg cursor-default transition-colors ${"bg-base-100 text-base-content/70 border border-base-300 hover:border-primary hover:text-primary"}`}
-                      >
-                        {skill}
-                      </motion.span>
-                    )
-                  })}
-                </motion.div>
-
-              </motion.div>
-            )
-          })}
+          {skills.map((group) => (
+            <SkillCard
+              key={group.category}
+              group={group}
+              icon={categoryIcons[group.category]}
+            />
+          ))}
         </div>
 
       </div>

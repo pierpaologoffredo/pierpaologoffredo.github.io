@@ -2,10 +2,10 @@
 import { personal, publications } from "../data/portfolio"
 import Typewriter from "./Typewriter"
 import MagneticButton from "./MagneticButton"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, useMotionValue, useTransform, animate, useInView } from "framer-motion"
 // import niceMap from "../assets/nice_map.png"
 import altamura_map from "../assets/altamura_map.webp"
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 
 // All'inizio della Hero, dopo gli altri import, definisci i ruoli:
 const roles = [
@@ -27,10 +27,27 @@ function SocialLink({ href, label, children }) {
   )
 }
 
+function StatCounter({ value, suffix = "" }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
+  const count = useMotionValue(0)
+  const rounded = useTransform(count, (v) => Math.round(v))
+
+  useEffect(() => {
+    if (isInView) animate(count, value, { duration: 1.5, ease: "easeOut" })
+  }, [isInView, count, value])
+
+  return (
+    <span ref={ref}>
+      <motion.span>{rounded}</motion.span>{suffix}
+    </span>
+  )
+}
+
 function Hero() {
   const [showMap, setShowMap] = useState(false)
   const papersCount   = publications.length
-  const phdYears      = 3
+  const citations = 144
   const languageCount = 3
 
   return (
@@ -102,27 +119,27 @@ function Hero() {
           </div>
             <div className="mb-4">
 
-              {/* Nome */}
-              <div className="overflow-hidden">
+              {/* Nome — primo piano */}
+              <div className="relative z-10">
                 <motion.h1
-                  initial={{ y: "100%" }}
-                  animate={{ y: 0 }}
+                  initial={{ y: 40, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                  className="text-6xl lg:text-7xl xl:text-8xl font-bold leading-none tracking-tight"
+                  className="mr-dafoe-regular text-[clamp(3rem,12.5vw,10rem)] leading-none"
                 >
                   Pierpaolo
                 </motion.h1>
               </div>
 
-              {/* Cognome con colore primario */}
-              <div className="overflow-hidden mt-1">
+              {/* Cognome — secondo piano, sovrapposto */}
+              <div className="overflow-hidden relative -mt-[clamp(0.8rem,4vw,4rem)]">
                 <motion.h1
                   initial={{ y: "100%" }}
                   animate={{ y: 0 }}
                   transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                  className="text-6xl lg:text-7xl xl:text-8xl font-bold leading-none tracking-tight text-primary"
+                  className="jersey-20-regular text-[clamp(4rem,15vw,12rem)] leading-none tracking-tight text-primary"
                 >
-                  Goffredo
+                  GOFFREDO
                 </motion.h1>
               </div>
 
@@ -186,17 +203,17 @@ function Hero() {
             </div>
 
             <div className="flex gap-3">
-              <div className="stat bg-base-200 rounded-box p-4 text-center min-w-0">
-                <div className="stat-value text-primary text-2xl">{papersCount}</div>
-                <div className="stat-desc text-xs">Papers</div>
+              <div className="bg-base-200 rounded-box p-4 min-w-0 flex flex-col items-center gap-1">
+                <div className="text-primary text-2xl font-extrabold"><StatCounter value={papersCount} /></div>
+                <div className="text-xs text-base-content/60">Papers</div>
               </div>
-              <div className="stat bg-base-200 rounded-box p-4 text-center min-w-0">
-                <div className="stat-value text-primary text-2xl">{phdYears}+</div>
-                <div className="stat-desc text-xs">PhD Years</div>
+              <div className="bg-base-200 rounded-box p-4 min-w-0 flex flex-col items-center gap-1">
+                <div className="text-primary text-2xl font-extrabold"><StatCounter value={citations} /></div>
+                <div className="text-xs text-base-content/60">Citations</div>
               </div>
-              <div className="stat bg-base-200 rounded-box p-4 text-center min-w-0">
-                <div className="stat-value text-primary text-2xl">{languageCount}</div>
-                <div className="stat-desc text-xs">Languages</div>
+              <div className="bg-base-200 rounded-box p-4 min-w-0 flex flex-col items-center gap-1">
+                <div className="text-primary text-2xl font-extrabold"><StatCounter value={languageCount} /></div>
+                <div className="text-xs text-base-content/60">Languages</div>
               </div>
             </div>
           </div>

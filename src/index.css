@@ -4,6 +4,11 @@
   theme: light, dark
 }
 
+/* Nasconde il cursore di sistema — sostituito da CustomCursor */
+*, *::before, *::after {
+  cursor: none !important;
+}
+
 /* Smooth scroll globale */
 html {
   scroll-behavior: smooth;
@@ -21,7 +26,7 @@ section#hero {
 
 /* Colore primario arancione per entrambi i temi */
 [data-theme="light"] {
-  --color-primary: oklch(70% 0.2 50);
+  --color-primary: #fb6e00;
   --color-primary-content: oklch(98% 0 0);
 }
 
@@ -76,3 +81,15 @@ section#hero {
 .animate-blob-1 { animation: blob-1 22s ease-in-out infinite; }
 .animate-blob-2 { animation: blob-2 26s ease-in-out infinite; }
 .animate-blob-3 { animation: blob-3 30s ease-in-out infinite; }
+
+.jersey-20-regular {
+  font-family: "Jersey 20", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.mr-dafoe-regular {
+  font-family: "Mr Dafoe", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
