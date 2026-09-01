@@ -34,11 +34,20 @@ export const personal = {
 export const experience = [
   {
     id: 1,
+    role: "AI Engineer",
+    company: "AlmaWave",
+    location: "Valenzano (BA), Italy",
+    period: "Sep 2026 – Present",
+    current: true,   // <-- usato per evidenziare il ruolo attivo
+    bullets: [],
+  },
+  {
+    id: 2,
     role: "Innovation Pilote",
     company: "ALTEN SA",
     location: "Valbonne, France",
     period: "June 2025 – Present",
-    current: true,   // <-- usato per evidenziare il ruolo attivo
+    current: false,
     bullets: [
       "Lead strategic AI/NLP innovation projects, defining technical direction and research goals.",
       "Architect Recommender Systems and Multimodal RAG solutions integrating text, audio, and video.",
@@ -48,7 +57,7 @@ export const experience = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     role: "NLP Research Engineer – Ph.D. Project",
     company: "Université Côte d'Azur",
     location: "Sophia Antipolis, France",
@@ -61,7 +70,7 @@ export const experience = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     role: "Laboratory Teacher",
     company: "Université Côte d'Azur",
     location: "Sophia Antipolis, France",
