@@ -24,7 +24,7 @@ export const personal = {
     scholar: "https://scholar.google.com/citations?user=9jQ3S3AAAAAJ&hl=it",
   },
 
-  summary: `**AI/NLP specialist** and **Innovation Pilote** at ALTEN SA, directing multiple AI 
+  summary: `**AI/NLP specialist** and **AI Engineer** at AlmaWave, directing multiple AI 
             and NLP projects within the R&D department. **Ph.D. in AI** (Université Côte d'Azur), 
             with a record of building **production-ready NLP systems** and publishing at top-tier 
             venues (**EMNLP**, **AAAI**, **IJCAI**, **ACL**). Experienced in mentoring interns/PhD 
@@ -46,7 +46,7 @@ export const experience = [
     role: "Innovation Pilote",
     company: "ALTEN SA",
     location: "Valbonne, France",
-    period: "June 2025 – Present",
+    period: "June 2025 – June 2026",
     current: false,
     bullets: [
       "Lead strategic AI/NLP innovation projects, defining technical direction and research goals.",
