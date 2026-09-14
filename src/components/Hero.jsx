@@ -9,8 +9,8 @@ import { useState, useEffect, useRef } from "react"
 
 // All'inizio della Hero, dopo gli altri import, definisci i ruoli:
 const roles = [
+  "AI Engineer @ AlmaWave Labs",
   "AI/NLP Specialist",
-  "Innovation Pilote @ ALTEN",
   "Researcher in Argument Mining",
 ]
 function SocialLink({ href, label, children }) {
