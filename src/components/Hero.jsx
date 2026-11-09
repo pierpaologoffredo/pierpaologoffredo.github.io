@@ -47,7 +47,7 @@ function StatCounter({ value, suffix = "" }) {
 function Hero() {
   const [showMap, setShowMap] = useState(false)
   const papersCount   = publications.length
-  const citations = 169
+  const citations = 181
   const languageCount = 3
 
   return (
